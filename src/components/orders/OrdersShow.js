@@ -6,7 +6,7 @@ import {Grid, CardContent, Card , Table,
 	TableContainer,
 	TableHead,
 	TableRow,
-	Paper,} from '@material-ui/core';
+	Paper,Avatar} from '@material-ui/core';
 import {OrdersTitle} from './OrdersTitle';
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -26,12 +26,12 @@ const OrdersShow = (props) => {
 	const {record} = useShowController(props);
 	const classes = useStyles();
 	if (!record) return null;
-	console.log(record.status);
-	function createData(name, cantidad, precio, categ, total) {
-		return { name, cantidad, precio, categ, total };
+	/* console.log(record.car); */
+	function createData(name, cantidad, precio, categ, total, images) {
+		return { name, cantidad, precio, categ, total, images };
 	  }
 	  
-	  const rows = record.car.map((item)=> createData(item.subcategory.name,item.cantidad,item.cantidad < 6 ? item.subcategory.price : item.subcategory.priceGalore,item.subcategory.category.name, item.cantidad < 6 ? item.subcategory.price * item.cantidad : item.subcategory.priceGalore*item.cantidad));
+	  const rows = record.car.map((item)=> createData(item.subcategory.name,item.cantidad,item.cantidad < 6 ? item.subcategory.price : item.subcategory.priceGalore,item.subcategory.category.name, item.cantidad < 6 ? item.subcategory.price * item.cantidad : item.subcategory.priceGalore*item.cantidad, item.subcategory.images,));
 
 	  var final = 0;
 	  for (const item of record.car){
@@ -52,6 +52,7 @@ const OrdersShow = (props) => {
       <Table className={classes.table} size="small" aria-label="a dense table">
         <TableHead>
           <TableRow>
+            <TableCell>Foto</TableCell>
             <TableCell>Producto</TableCell>
             <TableCell align="right">Cantidad</TableCell>
             <TableCell align="right">Precio&nbsp;($)</TableCell>
@@ -62,6 +63,12 @@ const OrdersShow = (props) => {
         <TableBody>
           {rows.map((row) => (
             <TableRow key={row.name}>
+				
+				<TableCell align="right"><Avatar
+			src={row.images[0].url}
+			style={{width: parseInt(25, 15), height: parseInt(25, 15)}}
+		
+		/></TableCell>
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
