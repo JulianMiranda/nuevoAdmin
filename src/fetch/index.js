@@ -1,7 +1,7 @@
 import {getToken, getHeaders} from '../util/api';
 import {fetchUtils} from 'react-admin';
 
-const apiUrl = 'https://packuba-firebase.herokuapp.com/api';
+const apiUrl = 'https://admin-firebase-backend.herokuapp.com/api';
 const mapboxToken =
 	'pk.eyJ1IjoiZWFxdWluZSIsImEiOiJjazM5M2pja24wYmY3M21tbWs0OXg3bWFlIn0.mOFlxf0gjpIXVHTFUyD_7A';
 const httpClient = fetchUtils.fetchJson;

@@ -5,7 +5,7 @@ import {PrepareGetObject} from '../util/prepareGetObject';
 import {PrepareCreateObject} from '../util/prepareCreateObject';
 import {PrepareGetManyRef} from '../util/prepareGetManyRef';
 
-const apiUrl = 'https://packuba-firebase.herokuapp.com/api';
+const apiUrl = 'https://admin-firebase-backend.herokuapp.com/api';
 const httpClient = fetchUtils.fetchJson;
 
 export default {
