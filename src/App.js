@@ -6,10 +6,14 @@ import {CustomLoginPage} from './auth/Login';
 import Users from './components/users';
 import Categories from './components/categories';
 import SubCategories from './components/subcategories';
-import Products from './components/products';
-import Theme from './components/layout/Theme';
+import Products from './components/products';/* 
+import Theme from './components/layout/Theme'; */
 import {Layout} from './components/layout';
 import Orders from './components/orders';
+
+
+import themeReducer from './themeReducer';
+import customRoutes from './routes';
 
 /* import RolesReducer from './store/reducers/roles.reducer'; */
 /* import RolesSaga from './store/sagas/roles.saga'; */
@@ -18,13 +22,15 @@ const App = (props) => {
 	return (
 		<Admin
 			title="Packuba Admin"
-			theme={Theme}
+			/* theme={Theme} */
 			/* customSagas={[RolesSaga]} */
 			/* customReducers={{roles: RolesReducer}} */
 			dataProvider={dataProvider}
 			authProvider={authProvider}
 			loginPage={CustomLoginPage}
 			layout={Layout}
+			customRoutes={customRoutes}
+			customReducers={{theme: themeReducer}}
 		>
 			{(permissions) =>
 				permissions === 'ADMIN' && [
