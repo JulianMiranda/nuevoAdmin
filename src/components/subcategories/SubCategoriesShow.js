@@ -17,46 +17,114 @@ const SubCategoriesShow = (props) => {
 			{isSmall ? (
 				<Card>
 					<CardContent>
-						<Grid container spacing={1}>
-							<Grid item xs={12}>
+						<Grid container spacing={2}>
+							<Grid item xs={6}>
 								<Typography variant="h4" gutterBottom align="center">
 									{record.name}
 								</Typography>
-							</Grid>
-							<Grid item xs={12}>
-								<Typography variant="h4" gutterBottom align="center">
-									{record.category.name}
-								</Typography>
-							</Grid>
-							<Grid item xs={12}>
-								<Typography variant="h4" gutterBottom align="center">
-									<ImageField
-										record={record}
-										align="center"
-										source="image.url"
+								{record.images.map((image) => (
+									<img
+										src={image.url}
+										alt=""
+										style={{
+											margin: 10,
+											height: 100,
+											width: 100,
+											marginTop: 15
+										}}
 									/>
-								</Typography>
+								))}
+								<ImageField record={record} align="center" source="images" />
 							</Grid>
-							<Grid item xs={12}>
-								<Typography variant="h6" gutterBottom align="center">
-									Creado: {new Date(record.createdAt).toLocaleDateString()}
-								</Typography>
-							</Grid>
-							<Grid item xs={12}>
-								<Typography variant="h6" gutterBottom align="center">
-									Editado: {new Date(record.updatedAt).toLocaleDateString()}
-								</Typography>
-							</Grid>
+							<Grid item xs={6}>
+								<Grid container spacing={2}>
+									<Grid item xs={6}>
+										<Typography variant="h5" gutterBottom align="center">
+											Creado{' '}
+										</Typography>
+										<Typography gutterBottom align="center">
+											{new Date(record.createdAt).toLocaleDateString()}
+										</Typography>
+									</Grid>
+									<Grid item xs={6}>
+										<Typography variant="h5" gutterBottom align="center">
+											Editado{' '}
+										</Typography>
+										<Typography gutterBottom align="center">
+											{new Date(record.updatedAt).toLocaleDateString()}
+										</Typography>
+									</Grid>
+								</Grid>
+								<Grid container spacing={2}>
+									<Grid item xs={6}>
+										<div className={classes.Space}>&nbsp;</div>
+										<Typography variant="h5" gutterBottom align="center">
+											Activo:
+										</Typography>
+										<Typography variant="h6" gutterBottom align="center">
+											<CustomBoolean
+												record={record}
+												label="Estado"
+												source="status"
+											/>
+										</Typography>
+									</Grid>
+									<Grid item xs={6}>
+										<div className={classes.Space}>&nbsp;</div>
+										<Typography variant="h5" gutterBottom align="center">
+											Peso: <i>{record.weight ? record.weight : ''} g</i>
+										</Typography>
+									</Grid>
+								</Grid>
+								<Grid container spacing={2}>
+									<Grid item xs={6}>
+										<div className={classes.Space}>&nbsp;</div>
+										<Typography variant="h5" gutterBottom align="center">
+											Categoría: <i>{record.category.name}</i>
+										</Typography>
+									</Grid>
+									<Grid item xs={6}>
+										<div className={classes.Space}>&nbsp;</div>
 
-							<Grid item xs={12}>
-								<Typography variant="h6" gutterBottom align="center">
-									Activo:{' '}
-									<CustomBoolean
-										record={record}
-										label="Estado"
-										source="status"
-									/>
-								</Typography>
+										<Typography variant="h5" gutterBottom align="center">
+											Precio Compra: <i>$ {record.cost} </i>
+										</Typography>
+									</Grid>
+								</Grid>
+								<Grid container spacing={2}>
+									<Grid item xs={6}>
+										<div className={classes.Space}>&nbsp;</div>
+										<Typography variant="h5" gutterBottom align="center">
+											Precio mayor: <i>$ {record.priceGalore}</i>
+										</Typography>
+									</Grid>
+									<Grid item xs={6}>
+										<div className={classes.Space}>&nbsp;</div>
+
+										<Typography variant="h5" gutterBottom align="center">
+											Precio Unidad: <i>$ {record.price} </i>
+										</Typography>
+									</Grid>
+								</Grid>
+
+								<Grid container spacing={2}>
+									<Grid item xs={6}>
+										<div className={classes.Space}>&nbsp;</div>
+										<Typography variant="h5" gutterBottom align="center">
+											Stock: <i>$ {record.stock}</i>
+										</Typography>
+									</Grid>
+									<Grid item xs={6}>
+										<div className={classes.Space}>&nbsp;</div>
+
+										<Typography variant="h5" gutterBottom align="center">
+											Tallas:{' '}
+											{record.aviableSizes.map((as, index) => (
+												<i key={index}>{as} |</i>
+											))}
+										</Typography>
+									</Grid>
+								</Grid>
 							</Grid>
 						</Grid>
 					</CardContent>
@@ -134,7 +202,41 @@ const SubCategoriesShow = (props) => {
 										<div className={classes.Space}>&nbsp;</div>
 
 										<Typography variant="h5" gutterBottom align="center">
-											Precio: <i>$ {record.price} </i>
+											Precio Compra: <i>$ {record.cost} </i>
+										</Typography>
+									</Grid>
+								</Grid>
+								<Grid container spacing={2}>
+									<Grid item xs={6}>
+										<div className={classes.Space}>&nbsp;</div>
+										<Typography variant="h5" gutterBottom align="center">
+											Precio mayor: <i>$ {record.priceGalore}</i>
+										</Typography>
+									</Grid>
+									<Grid item xs={6}>
+										<div className={classes.Space}>&nbsp;</div>
+
+										<Typography variant="h5" gutterBottom align="center">
+											Precio Unidad: <i>$ {record.price} </i>
+										</Typography>
+									</Grid>
+								</Grid>
+
+								<Grid container spacing={2}>
+									<Grid item xs={6}>
+										<div className={classes.Space}>&nbsp;</div>
+										<Typography variant="h5" gutterBottom align="center">
+											Stock: <i>$ {record.stock}</i>
+										</Typography>
+									</Grid>
+									<Grid item xs={6}>
+										<div className={classes.Space}>&nbsp;</div>
+
+										<Typography variant="h5" gutterBottom align="center">
+											Tallas:{' '}
+											{record.aviableSizes.map((as, index) => (
+												<i key={index}>{as} |</i>
+											))}
 										</Typography>
 									</Grid>
 								</Grid>

@@ -22,13 +22,15 @@ const subcategories = async (resource, params) => {
 	object.price = params.data.price;
 	object.priceGalore = params.data.priceGalore;
 	object.weight = params.data.weight;
+	object.cost = params.data.cost;
+	object.stock = params.data.stock;
+	object.aviableSizes = params.data.aviableSizes;
 	let urls = [];
 
 	urls = await UploadImage(resource, params.data.images);
-	
 
 	object.images = urls.map((url) => ({
-		url,
+		url
 	}));
 	/* const url = await UploadImage(resource, [params.data.image]);
 	object.image = {url: url[0]}; */

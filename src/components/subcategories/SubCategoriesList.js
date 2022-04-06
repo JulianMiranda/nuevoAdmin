@@ -25,10 +25,9 @@ const SubCategoriesList = (props) => {
 		>
 			{isSmall ? (
 				<SimpleList
+					linkType={'show'}
 					primaryText={(record) => record.name}
-					secondaryText={(record) =>
-						new Date(record.createdAt).toLocaleDateString()
-					}
+					secondaryText={(record) => record.price}
 				/>
 			) : (
 				<Datagrid rowClick="show">

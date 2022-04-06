@@ -89,7 +89,6 @@ export default {
 	},
 
 	update: async (resource, params) => {
-
 		const data = await PrepareEditObject(resource, params);
 		if (!data) return {data: {}};
 		const headers = await getHeaders();

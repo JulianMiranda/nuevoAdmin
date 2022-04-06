@@ -1,7 +1,6 @@
 import {UploadImage} from '../aws/uploadImageAWS';
 
 export const PrepareEditObject = async (resource, params) => {
-
 	const {data, previousData} = params;
 	if (resource === 'users') return await user(resource, data, previousData);
 	else if (resource === 'categories')
@@ -10,8 +9,7 @@ export const PrepareEditObject = async (resource, params) => {
 		return subcategory(resource, data, previousData);
 	else if (resource === 'products')
 		return product(resource, data, previousData);
-	else if (resource === 'orders')
-		return orders(resource, data, previousData);
+	else if (resource === 'orders') return orders(resource, data, previousData);
 
 	return {};
 };
@@ -44,7 +42,6 @@ const user = async (resource, data, previousData) => {
 const orders = async (resource, data, previousData) => {
 	const object = {};
 
-	
 	if (data.status !== previousData.status) {
 		object.status = data.status;
 	}
@@ -73,7 +70,7 @@ const category = async (resource, data, previousData) => {
 
 const product = async (resource, data, previousData) => {
 	const object = {};
-	
+
 	if (data.value !== previousData.value) {
 		object.value = data.value;
 	}
@@ -88,6 +85,15 @@ const subcategory = async (resource, data, previousData) => {
 	}
 	if (data.price !== previousData.price) {
 		object.price = data.price;
+	}
+	if (data.cost !== previousData.cost) {
+		object.cost = data.cost;
+	}
+	if (data.stock !== previousData.stock) {
+		object.stock = data.stock;
+	}
+	if (data.aviableSizes !== previousData.aviableSizes) {
+		object.aviableSizes = data.aviableSizes;
 	}
 	if (data.priceGalore !== previousData.priceGalore) {
 		object.priceGalore = data.priceGalore;
