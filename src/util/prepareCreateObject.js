@@ -16,6 +16,8 @@ const categories = async (resource, params) => {
 };
 const subcategories = async (resource, params) => {
 	const object = {};
+	console.log(params.data);
+	debugger;
 
 	object.name = params.data.name;
 	object.category = params.data.category;
