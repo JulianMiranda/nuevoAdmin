@@ -9,7 +9,9 @@ import {
 	SimpleForm,
 	NumberInput,
 	BooleanInput,
-	SelectArrayInput
+	SelectArrayInput,
+	ArrayInput,
+	SimpleFormIterator
 } from 'react-admin';
 import {SubCategoriesTitle} from './SubCategoriesTitle';
 import {makeStyles} from '@material-ui/core/styles';
@@ -31,6 +33,13 @@ const SubCategoriesEdit = (props) => {
 	return (
 		<Edit {...props} title={<SubCategoriesTitle />}>
 			<SimpleForm redirect="list">
+				<ArrayInput source="description" label="Descripción">
+					<SimpleFormIterator>
+						<TextInput source="title" label="Título" />
+						<TextInput source="content" label="Contenido" />
+					</SimpleFormIterator>
+				</ArrayInput>
+
 				<TextInput
 					label="Nombre"
 					autoFocus

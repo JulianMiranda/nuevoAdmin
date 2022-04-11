@@ -22,6 +22,7 @@ const SubCategoriesShow = (props) => {
 								<Typography variant="h4" gutterBottom align="center">
 									{record.name}
 								</Typography>
+
 								{record.images.map((image) => (
 									<img
 										src={image.url}
@@ -36,6 +37,7 @@ const SubCategoriesShow = (props) => {
 								))}
 								<ImageField record={record} align="center" source="images" />
 							</Grid>
+
 							<Grid item xs={6}>
 								<Grid container spacing={2}>
 									<Grid item xs={6}>

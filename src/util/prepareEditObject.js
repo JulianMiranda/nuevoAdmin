@@ -95,6 +95,9 @@ const subcategory = async (resource, data, previousData) => {
 	if (data.aviableSizes !== previousData.aviableSizes) {
 		object.aviableSizes = data.aviableSizes;
 	}
+	if (data.description !== previousData.description) {
+		object.description = data.description;
+	}
 	if (data.priceGalore !== previousData.priceGalore) {
 		object.priceGalore = data.priceGalore;
 	}
